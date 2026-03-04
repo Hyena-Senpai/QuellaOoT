@@ -454,7 +454,7 @@ void Minimap_Draw(PlayState* play) {
                     }
                 }
 
-                if (CHECK_BTN_ALL(play->state.input[0].press.button, BTN_L) && !Play_InCsMode(play)) {
+                /*if (CHECK_BTN_ALL(play->state.input[0].press.button, BTN_L) && !Play_InCsMode(play)) {
                     PRINTF("Game_play_demo_mode_check=%d\n", Play_InCsMode(play));
                     // clang-format off
                     if (!R_MINIMAP_DISABLED) { SFX_PLAY_CENTERED(NA_SE_SY_CAMERA_ZOOM_UP);
@@ -463,7 +463,8 @@ void Minimap_Draw(PlayState* play) {
                     }
                     // clang-format on
                     R_MINIMAP_DISABLED ^= 1;
-                }
+                }*/
+
 
                 break;
             case SCENE_HYRULE_FIELD:
@@ -542,7 +543,7 @@ void Minimap_Draw(PlayState* play) {
                     Minimap_DrawCompassIcons(play); // Draw icons for the player spawn and current position
                 }
 
-                if (CHECK_BTN_ALL(play->state.input[0].press.button, BTN_L) && !Play_InCsMode(play)) {
+                /*if (CHECK_BTN_ALL(play->state.input[0].press.button, BTN_L) && !Play_InCsMode(play)) {
                     // clang-format off
                     if (!R_MINIMAP_DISABLED) { SFX_PLAY_CENTERED(NA_SE_SY_CAMERA_ZOOM_UP);
                     } else {
@@ -550,7 +551,7 @@ void Minimap_Draw(PlayState* play) {
                     }
                     // clang-format on
                     R_MINIMAP_DISABLED ^= 1;
-                }
+                }*/
 
                 break;
         }

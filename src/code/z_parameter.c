@@ -3182,6 +3182,8 @@ void Interface_DrawItemButtons(PlayState* play) {
 #endif
 
     OPEN_DISPS(play->state.gfxCtx, "../z_parameter.c", 2900);
+    
+    //leaving the actual B button alone for now
 
     // B Button Color & Texture
     // Also loads the Item Button Texture reused by other buttons afterwards
@@ -3192,7 +3194,18 @@ void Interface_DrawItemButtons(PlayState* play) {
     OVERLAY_DISP = Gfx_TextureIA8(
         OVERLAY_DISP, gButtonBackgroundTex, 32, 32, WIDE_INCR(R_ITEM_BTN_X(0), WIDE_BTNB_SHIFT), R_ITEM_BTN_Y(0),
         WIDE_INCR(R_ITEM_BTN_WIDTH(0), -8), R_ITEM_BTN_WIDTH(0), R_ITEM_BTN_DD(0) << 1, R_ITEM_BTN_DD(0) << 1);
+    
+    //start of actual item button related stuff
 
+    // C-Up button
+    gDPPipeSync(OVERLAY_DISP++);
+    gDPSetCombineMode(OVERLAY_DISP++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    gDPSetPrimColor(OVERLAY_DISP++, 0, 0, R_C_BTN_COLOR(0), R_C_BTN_COLOR(1), R_C_BTN_COLOR(2), interfaceCtx->cDownAlpha);
+    gDPSetEnvColor(OVERLAY_DISP++, 0, 0, 0, 255);
+    OVERLAY_DISP = Gfx_TextureIA8(
+        OVERLAY_DISP, gOcarinaBtnIconCUpTex, 16, 16, WIDE_INCR(249, 0), 200,
+        WIDE_INCR(R_ITEM_BTN_WIDTH(1), -8), R_ITEM_BTN_WIDTH(1), R_ITEM_BTN_DD(1) << 1, R_ITEM_BTN_DD(1) << 1);
+        
     // C-Left Button Color & Texture
     gDPPipeSync(OVERLAY_DISP++);
     gDPSetPrimColor(OVERLAY_DISP++, 0, 0, R_C_BTN_COLOR(0), R_C_BTN_COLOR(1), R_C_BTN_COLOR(2),
@@ -3358,6 +3371,22 @@ void Interface_DrawItemButtons(PlayState* play) {
 }
 
 void Interface_DrawItemIconTexture(PlayState* play, void* texture, s16 button) {
+    s16 posX = WIDE_INCR(R_ITEM_ICON_X(button), sBtnPosXShifts[button]);
+
+    OPEN_DISPS(play->state.gfxCtx, "../z_parameter.c", 3079);
+
+    gDPLoadTextureBlock(OVERLAY_DISP++, texture, G_IM_FMT_RGBA, G_IM_SIZ_32b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP,
+                        G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+
+    gSPTextureRectangle(OVERLAY_DISP++, posX << 2, R_ITEM_ICON_Y(button) << 2,
+                        WIDE_INCR(((posX + R_ITEM_ICON_WIDTH(button)) << 2), WIDE_ITEMICON_RIGHT_X(button)),
+                        (R_ITEM_ICON_Y(button) + R_ITEM_ICON_WIDTH(button)) << 2, G_TX_RENDERTILE, 0, 0,
+                        WIDE_MULT((R_ITEM_ICON_DD(button) << 1), WIDE_GET_4_3), R_ITEM_ICON_DD(button) << 1);
+
+    CLOSE_DISPS(play->state.gfxCtx, "../z_parameter.c", 3094);
+}
+
+void Interface_DrawSwapItemIconTexture(PlayState* play, void* texture, s16 button) {
     s16 posX = WIDE_INCR(R_ITEM_ICON_X(button), sBtnPosXShifts[button]);
 
     OPEN_DISPS(play->state.gfxCtx, "../z_parameter.c", 3079);
@@ -3786,6 +3815,7 @@ void Interface_Draw(PlayState* play) {
         gDPPipeSync(OVERLAY_DISP++);
         gDPSetPrimColor(OVERLAY_DISP++, 0, 0, 255, 255, 255, interfaceCtx->bAlpha);
         gDPSetCombineMode(OVERLAY_DISP++, G_CC_MODULATERGBA_PRIM, G_CC_MODULATERGBA_PRIM);
+        //item icon stuff and actions are going to need to be reworked
 
         if (!(interfaceCtx->unk_1FA)) {
             // B Button Icon & Ammo Count
@@ -3821,6 +3851,8 @@ void Interface_Draw(PlayState* play) {
         }
 
         gDPPipeSync(OVERLAY_DISP++);
+
+        /* these motherfuckers */
 
         // C-Left Button Icon & Ammo Count
         if (gSaveContext.save.info.equips.buttonItems[1] < 0xF0) {
@@ -3858,6 +3890,8 @@ void Interface_Draw(PlayState* play) {
                               PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, TEXEL0, 0, PRIMITIVE, 0);
             Interface_DrawAmmoCount(play, 3, interfaceCtx->cRightAlpha);
         }
+
+        /*end of these motherfuckers*/
 
         // A Button
         Gfx_SetupDL_42Overlay(play->state.gfxCtx);
