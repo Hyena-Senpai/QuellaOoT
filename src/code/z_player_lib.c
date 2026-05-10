@@ -298,7 +298,7 @@ Gfx* sPlayerRightHandShieldDLs[PLAYER_SHIELD_MAX * 4] = {
     gLinkAdultRightHandClosedFarDL,
     gLinkChildRightFistAndDekuShieldFarDL,
     // PLAYER_SHIELD_HYLIAN
-    gLinkAdultRightHandHoldingHylianShieldNearDL,
+    gLinkRightHandHoldingHylianShieldDL_opaque_dl,
     gLinkChildRightHandClosedNearDL,
     gLinkAdultRightHandHoldingHylianShieldFarDL,
     gLinkChildRightHandClosedFarDL,
@@ -321,7 +321,7 @@ Gfx* D_80125D28[(PLAYER_SHIELD_MAX + 2) * 4] = {
     gLinkAdultMasterSwordAndSheathFarDL,
     gLinkChildDekuShieldSwordAndSheathFarDL,
     // PLAYER_SHIELD_HYLIAN
-    gLinkAdultHylianShieldSwordAndSheathNearDL,
+    gLinkHylianShieldSwordAndSheathDL_opaque_dl,
     gLinkChildHylianShieldSwordAndSheathNearDL,
     gLinkAdultHylianShieldSwordAndSheathFarDL,
     gLinkChildHylianShieldSwordAndSheathFarDL,
@@ -389,14 +389,14 @@ Gfx* gPlayerLeftHandBgsDLs[] = {
 };
 
 Gfx* gPlayerLeftHandOpenDLs[] = {
-    gLinkAdultLeftHandNearDL,
+    gLinkLeftHandDL_opaque_dl,
     gLinkChildLeftHandNearDL,
     gLinkAdultLeftHandFarDL,
     gLinkChildLeftHandFarDL,
 };
 
 Gfx* gPlayerLeftHandClosedDLs[] = {
-    gLinkAdultLeftHandClosedNearDL,
+    gLinkLeftHandClosedDL_opaque_dl,
     gLinkChildLeftFistNearDL,
     gLinkAdultLeftHandClosedFarDL,
     gLinkChildLeftFistFarDL,
@@ -411,21 +411,21 @@ Gfx* sPlayerLeftHandSwordDLs2[] = {
 };
 
 Gfx* sPlayerLeftHandSwordDLs[] = {
-    gLinkAdultLeftHandHoldingMasterSwordNearDL,
+    gLinkLeftHandHoldingMasterSwordNearDL_opaque_dl,
     gLinkChildLeftFistAndKokiriSwordNearDL,
     gLinkAdultLeftHandHoldingMasterSwordFarDL,
     gLinkChildLeftFistAndKokiriSwordFarDL,
 };
 
 Gfx* sPlayerRightHandOpenDLs[] = {
-    gLinkAdultRightHandNearDL,
+    gLinkRightHandDL_opaque_dl,
     gLinkChildRightHandNearDL,
     gLinkAdultRightHandFarDL,
     gLinkChildRightHandFarDL,
 };
 
 Gfx* sPlayerRightHandClosedDLs[] = {
-    gLinkAdultRightHandClosedNearDL,
+    gLinkRightHandClosedDL_opaque_dl,
     gLinkChildRightHandClosedNearDL,
     gLinkAdultRightHandClosedFarDL,
     gLinkChildRightHandClosedFarDL,
@@ -439,21 +439,21 @@ Gfx* sPlayerRightHandBowSlingshotDLs[] = {
 };
 
 Gfx* D_80125E78[] = {
-    gLinkAdultMasterSwordAndSheathNearDL,
+    gLinkMasterSwordAndSheathDL_opaque_dl,
     gLinkChildSwordAndSheathNearDL,
     gLinkAdultMasterSwordAndSheathFarDL,
     gLinkChildSwordAndSheathFarDL,
 };
 
 Gfx* D_80125E88[] = {
-    gLinkAdultSheathNearDL,
+    gLinkSheathDL_opaque_dl,
     gLinkChildSheathNearDL,
     gLinkAdultSheathFarDL,
     gLinkChildSheathFarDL,
 };
 
 Gfx* sPlayerWaistDLs[] = {
-    gLinkAdultWaistNearDL,
+    gLinkWaistDL_opaque_dl,
     gLinkChildWaistNearDL,
     gLinkAdultWaistFarDL,
     gLinkChildWaistFarDL,
@@ -1027,18 +1027,17 @@ void* sMouthTextures[PLAYER_MOUTH_MAX] = {
 };
 #else
 // Defining `AVOID_UB` will use a 2D array instead and properly use the child link pointers to allow for shifting.
-void* sEyeTextures[][PLAYER_EYES_MAX] = {
-    {
-        gLinkAdultEyesOpenTex,    // PLAYER_EYES_OPEN
-        gLinkAdultEyesHalfTex,    // PLAYER_EYES_HALF
-        gLinkAdultEyesClosedfTex, // PLAYER_EYES_CLOSED
-        gLinkAdultEyesRightTex,   // PLAYER_EYES_RIGHT
-        gLinkAdultEyesLeftTex,    // PLAYER_EYES_LEFT
-        gLinkAdultEyesWideTex,    // PLAYER_EYES_WIDE
-        gLinkAdultEyesDownTex,    // PLAYER_EYES_DOWN
-        gLinkAdultEyesWincingTex, // PLAYER_EYES_WINCING
-    },
-    {
+void* sEyeTextures[][PLAYER_EYES_MAX] = {{
+    gLinkAdultSkel_gLinkAdultEyesOpenTex_ci8_tlut_gLinkAdultHeadTLUT_png_001_i8,
+    gLinkAdultSkel_gLinkAdultEyesHalfTex_ci8_tlut_gLinkAdultHeadTLUT_png_001_i8,
+    gLinkAdultSkel_gLinkAdultEyesClosedTex_ci8_tlut_gLinkAdultHeadTLUT_png_001_i8,
+    gLinkAdultSkel_gLinkAdultEyesRightTex_ci8_tlut_gLinkAdultHeadTLUT_png_001_i8,
+    gLinkAdultSkel_gLinkAdultEyesLeftTex_ci8_tlut_gLinkAdultHeadTLUT_png_001_i8,
+    gLinkAdultSkel_gLinkAdultEyesWideTex_ci8_tlut_gLinkAdultHeadTLUT_png_001_i8,
+    gLinkAdultSkel_gLinkAdultEyesDownTex_ci8_tlut_gLinkAdultHeadTLUT_png_001_i8,
+    gLinkAdultSkel_gLinkAdultEyesWincingTex_ci8_tlut_gLinkAdultHeadTLUT_png_001_i8,
+ },
+{
         gLinkChildEyesOpenTex,    // PLAYER_EYES_OPEN
         gLinkChildEyesHalfTex,    // PLAYER_EYES_HALF
         gLinkChildEyesClosedfTex, // PLAYER_EYES_CLOSED
@@ -1053,23 +1052,20 @@ void* sEyeTextures[][PLAYER_EYES_MAX] = {
         gLinkChildEyesWideTex,    // PLAYER_EYES_WIDE
         gLinkChildEyesDownTex,    // PLAYER_EYES_DOWN
         gLinkChildEyesWincingTex, // PLAYER_EYES_WINCING
-    },
-};
+    }};
 
-void* sMouthTextures[][PLAYER_MOUTH_MAX] = {
-    {
-        gLinkAdultMouthClosedTex, // PLAYER_MOUTH_CLOSED
-        gLinkAdultMouthHalfTex,   // PLAYER_MOUTH_HALF
-        gLinkAdultMouthOpenTex,   // PLAYER_MOUTH_OPEN
-        gLinkAdultMouthSmileTex,  // PLAYER_MOUTH_SMILE
-    },
-    {
+void* sMouthTextures[][PLAYER_MOUTH_MAX] = {{
+    gLinkAdultSkel_gLinkAdultMouthClosedTex_ci8_tlut_gLinkAdultHeadTLUT_png_001_i8,
+    gLinkAdultSkel_gLinkAdultMouthHalfTex_ci8_tlut_gLinkAdultHeadTLUT_png_001_i8,
+    gLinkAdultSkel_gLinkAdultMouthOpenTex_ci8_tlut_gLinkAdultHeadTLUT_png_001_i8,
+    gLinkAdultSkel_gLinkAdultMouthSmileTex_ci8_tlut_gLinkAdultHeadTLUT_png_001_i8,
+ },
+{
         gLinkChildMouthClosedTex, // PLAYER_MOUTH_CLOSED
         gLinkChildMouthHalfTex,   // PLAYER_MOUTH_HALF
         gLinkChildMouthOpenTex,   // PLAYER_MOUTH_OPEN
         gLinkChildMouthSmileTex,  // PLAYER_MOUTH_SMILE
-    },
-};
+    }};
 #endif
 
 Color_RGB8 sTunicColors[PLAYER_TUNIC_MAX] = {
