@@ -180,7 +180,7 @@ s32 Skybox_CalculateFace256(SkyboxContext* skyboxCtx, Vtx* roomVtx, s32 roomVtxS
         for (vtxIdx = 0, l = 0; l < 4; l++, ult += 31) {
             for (uls = 0, m = 0; m < 4; m++, uls += 63, vtxIdx += 4) {
                 gDPLoadTextureTile(skyboxCtx->gfx++, (u8*)skyboxCtx->staticSegments[0] + sSkybox256TexOffsets[faceNum],
-                                   G_IM_FMT_CI, G_IM_SIZ_8b, 256, 0, uls, ult, uls + 63, ult + 31, 0,
+                                   G_IM_FMT_IA, G_IM_SIZ_8b, 256, 0, uls, ult, uls + 63, ult + 31, 0,
                                    G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP,
                                    G_TX_NOMASK, G_TX_NOLOD);
                 gSP1Quadrangle(skyboxCtx->gfx++, sSkybox256VtxIndices[vtxIdx + 1], sSkybox256VtxIndices[vtxIdx + 2],

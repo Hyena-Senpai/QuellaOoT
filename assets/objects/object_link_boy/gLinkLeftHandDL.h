@@ -1,0 +1,22 @@
+#ifndef GLINKLEFTHANDDL_H
+#define GLINKLEFTHANDDL_H
+
+#include "ultra64.h"
+#include "object_link_boy.h"
+
+extern u64 gLinkLeftHandDL_gLinkAdultDefaultGauntlet1Tex_ci8_tlut_gLinkAdultTLUT5_png_004_i8[];
+extern u64 gLinkLeftHandDL_gLinkAdultDefaultGauntlet2Tex_ci8_tlut_gLinkAdultTLUT5_png_004_i8[];
+extern u64 gLinkLeftHandDL_gLinkAdultHandTex_ci8_tlut_gLinkAdultTLUT6_png_004_i8[];
+extern Vtx gLinkLeftHandDL_gLinkLeftHandDL_mesh_layer_Opaque_vtx_cull[8];
+extern Vtx gLinkLeftHandDL_gLinkLeftHandDL_mesh_layer_Opaque_vtx_0[53];
+extern Gfx gLinkLeftHandDL_gLinkLeftHandDL_mesh_layer_Opaque_tri_0[];
+extern Vtx gLinkLeftHandDL_gLinkLeftHandDL_mesh_layer_Opaque_vtx_1[18];
+extern Gfx gLinkLeftHandDL_gLinkLeftHandDL_mesh_layer_Opaque_tri_1[];
+extern Vtx gLinkLeftHandDL_gLinkLeftHandDL_mesh_layer_Opaque_vtx_2[52];
+extern Gfx gLinkLeftHandDL_gLinkLeftHandDL_mesh_layer_Opaque_tri_2[];
+extern Gfx mat_gLinkLeftHandDL_f3dlite_material_022_layerOpaque[];
+extern Gfx mat_gLinkLeftHandDL_f3dlite_material_023_layerOpaque[];
+extern Gfx mat_gLinkLeftHandDL_f3dlite_material_024_layerOpaque[];
+extern Gfx gLinkLeftHandDL_opaque_dl[];
+
+#endif

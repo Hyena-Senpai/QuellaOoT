@@ -89,6 +89,26 @@ extern Gfx gLinkAdultWaistFarDL[78];
 extern Gfx gLinkAdultWaistNearDL[105];
 extern Gfx gLinkAdultRightShoulderNearDL[56];
 
-extern FlexSkeletonHeader gLinkAdultSkel;
-
 #endif
+
+#include "gLinkAdultSkel.h"
+
+#include "gLinkWaistDL.h"
+
+#include "gLinkRightHandClosedDL.h"
+
+#include "gLinkLeftHandClosedDL.h"
+
+#include "gLinkLeftHandDL.h"
+
+#include "gLinkRightHandDL.h"
+
+#include "gLinkHylianShieldSwordAndSheathDL.h"
+
+#include "gLinkRightHandHoldingHylianShieldDL.h"
+
+#include "gLinkLeftHandHoldingMasterSwordNearDL.h"
+
+#include "gLinkSheathDL.h"
+
+#include "gLinkMasterSwordAndSheathDL.h"
